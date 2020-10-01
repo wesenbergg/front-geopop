@@ -1,25 +1,29 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import TitleBar from 'frameless-titlebar';
+import icon from './icon.png';
+import Main from './Main';
+import { ipcMock } from './utils/ipcRendererMock';
+import { headerTheme } from './utils/titleBarStyle';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+const { ipcRenderer } = window.require ? window.require('electron'): ipcMock;
+
+const App = () => {
+  
+  return(
+    <>
+    <TitleBar
+      icon={<img src={icon} className="icon" alt="icon" />}
+      app="Electron"
+      title="GeoPop"
+      theme={headerTheme}
+      className="titleBar"
+      onClose={() => ipcRenderer.send("close")}
+      onMinimize={() => ipcRenderer.send("minimize")}
+      onMaximize={() => ipcRenderer.send("maximize")}
+      //onDoubleClick={() => { enqueueSnackbar('double clicked', { variant: 'success' }) }}
+    />
+    <Main />
+    </>
   );
 }
 
