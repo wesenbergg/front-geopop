@@ -21,8 +21,8 @@ export const headerTheme = {
     background: '#2e8b57dd',
     borderBottom: '',
     icon: {
-      width: 18,
-      height: 18
+      width: 19,
+      height: 19
     },
     button: {
       active: {
