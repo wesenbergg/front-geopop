@@ -3,6 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "main": "public/electron.js",
+  "description": "GeoPop frontend application",
+  "author": "me",
+  "homepage": "./",
+  "build": {
+    "appId": "front.geopop",
+    "win": {
+      "icon": "build/icon.png"
+    }
+  },
   "dependencies": {
     "@giphy/js-fetch-api": "^1.7.0",
     "@giphy/react-components": "^1.9.1",
