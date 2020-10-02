@@ -51,7 +51,7 @@ const MessageForm = ({ markerState, formState }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const newMarker = { id: Math.random(), gif: curGif.id, label, pos };
+    const newMarker = { id: Math.random(), gif: curGif.id, label, pos, marker: "wink" };
     setData([ ...data, newMarker ]);
     fetch('http://localhost:3001/data', {
         method: 'POST',
