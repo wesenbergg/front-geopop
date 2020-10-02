@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Carousel, Gif } from '@giphy/react-components'
+import { Carousel, Gif } from '@giphy/react-components';
 import {
   SearchBar, // the search bar the user will type into
   SearchContext, // the context that wraps and connects our components
-} from '@giphy/react-components'
+} from '@giphy/react-components';
 import { useDebounce } from 'use-debounce/lib';
 
 const Preview = ({gif}) => {
@@ -15,19 +15,19 @@ const Preview = ({gif}) => {
   );
 }
 
-const MessageForm = ({ markerState }) => {
+const MessageForm = ({ markerState, formState }) => {
+  const { data, setData } = markerState;
+  const { form, setForm } = formState;
+  const { fetchGifs, searchKey } = useContext(SearchContext);
+
   const [label, setLabel] = useState(); //Data to form
   const [curGif, setCurGif] = useState(); //new post
   const [pos, setPos] = useState();
 
-  const { data, setData } = markerState;
   const [mapData, setMapData] = useState();
   const [search, setSearch] = useState('');
-  const [clearGifSearch, setClearGifSearch] = useState(true);
   const [searchTerm] = useDebounce(search, 1000);
-  const { fetchGifs, searchKey } = useContext(SearchContext);
-  console.log(data);
-
+  
   useEffect(() => {
     if(!searchTerm) return;
     console.log(searchTerm);
@@ -68,8 +68,7 @@ const MessageForm = ({ markerState }) => {
   }
 
   return(
-    <>
-    <form autoComplete='off' className="col-4 h-100" onSubmit={e => handleSubmit(e)}>
+    <form autoComplete='off' className={form ? "pr-2 pl-2": "d-none"} onSubmit={e => handleSubmit(e)}>
       <h3 className="pt-4">New Pop message</h3>
       <input className="form-control mt-2" placeholder="Whats on your mind..."
         value={label} onChange={(e) => setLabel(e.target.value)} />
@@ -87,12 +86,9 @@ const MessageForm = ({ markerState }) => {
           console.log("gif", gif);
           e.preventDefault();
           setCurGif(gif);
-          setClearGifSearch(!clearGifSearch)
         }} />
       <button type="submit" className="btn btn-success btn-block mt-2" >Send</button>
-      
     </form>
-    </>
   );
 }
 

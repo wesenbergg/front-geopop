@@ -1,5 +1,3 @@
-import { getColor } from "@giphy/react-components/dist/components/gif";
-
 export const CSS_COLOR_NAMES = [
   "AliceBlue",
   "AntiqueWhite",

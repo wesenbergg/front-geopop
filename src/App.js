@@ -4,7 +4,7 @@ import icon from './img/icon.png';
 import { ipcMock } from './utils/ipcRendererMock';
 import { headerTheme } from './utils/titleBarStyle';
 import MapContainer from './MapContainer';
-import MessageForm from './MessageForm';
+import ControlPanel from './ControlPanel';
 
 const { ipcRenderer } = window.require ? window.require('electron'): ipcMock;
 
@@ -26,7 +26,7 @@ const App = () => {
     />
     {/* Main container */}
     <div className="main-container bg-main container-fluid m-0 p-0">
-      <MessageForm  markerState={{data, setData}} />
+      <ControlPanel  markerState={{data, setData}} />
       <MapContainer markerState={{data, setData}} />
     </div>
     </>
