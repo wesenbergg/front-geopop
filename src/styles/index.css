@@ -93,3 +93,8 @@ code {
   background-color: DodgerBlue !important; 
   color: #ffffff; 
 }
+
+.leaflet-div-icon {
+  background-color: #0000;
+  border: 0;
+}

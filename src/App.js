@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import TitleBar from 'frameless-titlebar';
-import icon from './icon.png';
+import icon from './img/icon.png';
 import { ipcMock } from './utils/ipcRendererMock';
 import { headerTheme } from './utils/titleBarStyle';
 import MapContainer from './MapContainer';

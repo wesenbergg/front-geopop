@@ -1,36 +1,10 @@
 {
   "data": [
     {
-      "id": 9812337,
-      "gif": "3orifdxh94UCCYVeW4",
-      "label": "dad",
-      "pos": [
-        60,
-        60
-      ]
-    },
-    {
-      "id": 9812237,
-      "gif": "3oriO0OEd9QIDdllqo",
-      "label": "cat",
-      "pos": [
-        60.168,
-        24.95
-      ]
-    },
-    {
-      "id": 9812137,
-      "gif": "RQSuZfuylVNAY",
-      "label": "dog",
-      "pos": [
-        60.17,
-        24.94
-      ]
-    },
-    {
       "id": 9812437,
       "gif": "nuXIEASt1wqI",
       "label": "goth",
+      "marker": "sad",
       "pos": [
         60.16985569999999,
         24.938379
@@ -40,6 +14,7 @@
       "id": 0.3222723534748255,
       "gif": "QA7ZKB6w25I0TuCIOc",
       "label": "Pony",
+      "marker": "wink",
       "pos": [
         60.1685348,
         24.9304942
@@ -49,6 +24,7 @@
       "id": 0.0035657318392909865,
       "gif": "rDroB384ydCvK",
       "label": "Plane",
+      "marker": "love",
       "pos": [
         60.2590113,
         25.057753573850835
@@ -58,9 +34,50 @@
       "id": 0.9022888652730574,
       "gif": "xUA7bk0gnhxqMXLCKc",
       "label": "Kontula hoods",
+      "marker": "glasses",
       "pos": [
         60.2359519,
         25.0836317
+      ]
+    },
+    {
+      "id": 0.8619481199702621,
+      "gif": "7IHaFYgTgCICI",
+      "label": "Malmin Ykä",
+      "marker": "glasses",
+      "pos": [
+        60.2507611,
+        25.0085738
+      ]
+    },
+    {
+      "id": 0.8285324004384733,
+      "gif": "TlqRQ1nowmHIs",
+      "label": "GTO",
+      "marker": "fear",
+      "pos": [
+        35.6828387,
+        139.7594549
+      ]
+    },
+    {
+      "id": 0.22523622764403162,
+      "gif": "s4Bi420mMDRBK",
+      "label": "How are you there?",
+      "marker": "fear",
+      "pos": [
+        64.175029,
+        -51.7355386
+      ]
+    },
+    {
+      "id": 0.16147801792128824,
+      "gif": "7A4iGSv5ncnLxUfGjZ",
+      "label": "Haters gonna hate",
+      "marker": "laugh",
+      "pos": [
+        38.8949855,
+        -77.0365708
       ]
     }
   ]
