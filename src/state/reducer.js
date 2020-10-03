@@ -22,8 +22,8 @@ export const reducer = (state, action) => {
 
 export const initUser = () => {
   const userFromStorage = localStorage.getItem("geopopUser")
-  // console.log('uFromStorage', userFromStorage);
-  if (!userFromStorage || userFromStorage === 'undefined') return
+  console.log('uFromStorage', userFromStorage);
+  if (!userFromStorage || userFromStorage === 'undefined') return { type: "NO_USER" };
   return { type: "INIT_USER", payload: JSON.parse(userFromStorage) };
 };
 

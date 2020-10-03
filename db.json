@@ -42,6 +42,16 @@
         24.7135291
       ],
       "marker": "laugh"
+    },
+    {
+      "id": 0.7841265820290542,
+      "gif": "xT0xeknwLbwR5srUvm",
+      "label": "Guess whos back?",
+      "pos": [
+        42.3315509,
+        -83.0466403
+      ],
+      "marker": "glasses"
     }
   ],
   "replies": [
@@ -108,6 +118,18 @@
       ],
       "marker": "love",
       "text": "A little bit longer reply, how about that? I'm sure it is fine but i need just check it. Ok. Checked. Now Double check. Cool! ",
+      "alias": "Mr.Green"
+    },
+    {
+      "id": 0.28656152605601704,
+      "receiver_id": 0.7267194774040007,
+      "title": "Plane",
+      "pos": [
+        60.2590113,
+        25.057753573850835
+      ],
+      "marker": "love",
+      "text": "I love trains",
       "alias": "Mr.Green"
     }
   ]

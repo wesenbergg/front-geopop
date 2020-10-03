@@ -8,12 +8,13 @@ import MapContainer from './MapContainer';
 import ControlPanel from './ControlPanel';
 import { useStateValue } from './state/state';
 import { initUser } from './state/reducer';
+import WelcomePage from './WelcomePage';
 
 const { ipcRenderer } = window.require ? window.require('electron'): ipcMock;
 
 const App = () => {
   const [data, setData] = useState([]);
-  const [, dispatch] = useStateValue()
+  const [ { user }, dispatch] = useStateValue()
 
   useEffect(() => {    
     dispatch(initUser())
@@ -31,11 +32,15 @@ const App = () => {
       onMinimize={() => ipcRenderer.send("minimize")}
       onMaximize={() => ipcRenderer.send("maximize")}
     />
-    {/* Main container */}
-    <div className="main-container bg-main container-fluid m-0 p-0">
-      <ControlPanel  markerState={{data, setData}} />
-      <MapContainer markerState={{data, setData}} />
-    </div>
+    { user && user.id ? //user initial state = {}
+      /* Main container */
+      <div className="main-container bg-main container-fluid m-0 p-0">
+        <ControlPanel  markerState={{data, setData}} />
+        <MapContainer markerState={{data, setData}} />
+      </div>:
+     /* Welcome page */
+     <WelcomePage />
+    }
     </>
   );
 }

@@ -30,7 +30,7 @@ const ControlPanel = ({ markerState }) => {
   }, [searchTerm])
 
   useEffect(() => {
-    setSearch(user.loc_label)
+    setSearch(user.pos_label)
   }, [editLocation]);
 
   const handleAutoCompleteClick = (prop, geo) => {
