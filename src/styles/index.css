@@ -158,6 +158,7 @@ code {
   width: 100%;
   height: calc(100vh - 29px);
   position: relative;
+  overflow: hidden;
 }
 
 .center {

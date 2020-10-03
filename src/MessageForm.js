@@ -1,11 +1,11 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Carousel, Gif } from '@giphy/react-components';
 import {
   SearchBar, // the search bar the user will type into
   SearchContext, // the context that wraps and connects our components
 } from '@giphy/react-components';
-import { useDebounce } from 'use-debounce/lib';
 import EmojiImage from './components/EmojiImage';
+import AutocompleteInput from './components/AutocompleteInput';
 
 const Preview = ({gif}) => {
   return (
@@ -26,30 +26,9 @@ const MessageForm = ({ markerState, formState }) => {
   const [pos, setPos] = useState();
   const [marker, setMarker] = useState();
 
-  const [mapData, setMapData] = useState();
-  const [search, setSearch] = useState('');
-  const [searchTerm] = useDebounce(search, 1000);
-  
-  useEffect(() => {
-    if(!searchTerm) return;
-    console.log(searchTerm);
-    fetch('https://nominatim.openstreetmap.org/search?format=geocodejson&limit=4&q='+searchTerm)
-    .then(res => res.json())
-    .then(res => {
-      if(res && res.features) setMapData(res.features)
-    })
-  }, [searchTerm])
-
-  const handleAutoCompleteClick = (prop, geo) => {
+  const handleAutoComplete = ({ _, geo }) => {
     setPos([geo.coordinates[1], geo.coordinates[0]])
-    setSearch(prop.geocoding.label)
-    setMapData(undefined)
   }
-
-  const showResult = () => mapData.map(({ properties, geometry }) =>
-  <div key={Math.random()} onClick={() => handleAutoCompleteClick(properties, geometry)}>
-    {properties.geocoding.label}
-  </div> );
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -62,7 +41,6 @@ const MessageForm = ({ markerState, formState }) => {
     })
     .then(_ => {
       setLabel("")
-      setSearch("")
       setCurGif(undefined)
       setPos(undefined)
       setMarker(undefined)
@@ -75,13 +53,9 @@ const MessageForm = ({ markerState, formState }) => {
       <h3 className="pt-4">New Pop message</h3>
       <input className="form-control mt-3" placeholder="Whats on your mind..."
         value={label} onChange={(e) => setLabel(e.target.value)} />
-      <div className="autocomplete">
-        <input className="form-control mt-3 " placeholder="Location, to share your vibes" 
-          value={search} onChange={(e) => setSearch(e.target.value)}/>
-        <div className="autocomplete-items">
-          {mapData ? showResult(): ''}
-        </div>
-      </div>
+
+      <AutocompleteInput className="mt-3"  handleAutoComplete={handleAutoComplete}
+        placeholder="Location, to share your vibes" />
       
       {curGif ? <Preview gif={curGif} />: ''}
       <SearchBar placeholder="Mood in GIF..." className="gif-input form-control mt-3" />
