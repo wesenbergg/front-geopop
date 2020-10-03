@@ -1,56 +1,34 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { setPos } from './state/reducer';
+import { useStateValue } from './state/state';
+import EmojiImage from './components/EmojiImage';
 
 const ReplyContainer = ({ repliesState }) => {
   const {replies,} = repliesState
+  const [, dispatch ] = useStateValue();
+  const [ replyList, setReplyList ] = useState([]);
   
-  const replyList = [
-    {
-      to: "Pony",
-      pos: [],
-      text: "Hahaha! Cute!"
-    },
-    {
-      to: "goth",
-      pos: [],
-      text: "Slick moves fam!"
-    },
-    {
-      to: "Kontula hoods",
-      pos: [],
-      text: "00940"
-    },
-    {
-      to: "Malmin Ykä",
-      pos: [],
-      text: "kEtÄ täNäÄ cAzy HoRsEes?"
-    },
-    {
-      to: "How are you there?",
-      pos: [],
-      text: "Hahaha! Fine thanks for asking!"
-    },
-    {
-      to: "Haters gonna hate",
-      pos: [],
-      text: "make 'murica g8 agan"
-    },
-    {
-      to: "GTO",
-      pos: [],
-      text: "SOS"
-    },
-  ]
+  useEffect(() => {
+    fetch("http://localhost:3001/replies")
+    .then(res => res.json())
+    .then(res => setReplyList(res) )
+  }, [])
 
   const showReplies = () => replyList.map(e => 
-    <div className="m-3 p-3 separator">
-      <p className="lead mb-0"><strong>{e.to}</strong></p>
-      <p><i>{e.text}</i></p>
+    <div className="m-3 pb-3 pt-3 separator container row" onClick={() => dispatch( setPos(e.pos) ) }>
+      <EmojiImage name={e.marker} className="col-2"/>
+      <div className="col-10">
+        <p className="lead font-weight-bold mb-0">{e.title}</p>
+        <p>{e.alias}: <i>{e.text}</i></p>
+      </div>
     </div>)
 
   return(
     <div className={replies ? "": "d-none"}>
       <h3 className="pt-4 pl-3 pb-3 mb-0 inbox-h">Inbox</h3>
-      {showReplies()}
+      <div className="reply-container">
+        {showReplies()}
+      </div>
     </div>
   );
 }

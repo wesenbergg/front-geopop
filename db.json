@@ -1,7 +1,8 @@
 {
-  "data": [
+  "posts": [
     {
       "id": 9812437,
+      "sender_id": 0.7267194774040007,
       "gif": "nuXIEASt1wqI",
       "label": "goth",
       "marker": "sad",
@@ -11,17 +12,8 @@
       ]
     },
     {
-      "id": 0.3222723534748255,
-      "gif": "QA7ZKB6w25I0TuCIOc",
-      "label": "Pony",
-      "marker": "wink",
-      "pos": [
-        60.1685348,
-        24.9304942
-      ]
-    },
-    {
       "id": 0.0035657318392909865,
+      "sender_id": 0.7267194774040007,
       "gif": "rDroB384ydCvK",
       "label": "Plane",
       "marker": "love",
@@ -32,6 +24,7 @@
     },
     {
       "id": 0.9022888652730574,
+      "sender_id": 0.7267194774040007,
       "gif": "xUA7bk0gnhxqMXLCKc",
       "label": "Kontula hoods",
       "marker": "glasses",
@@ -41,44 +34,68 @@
       ]
     },
     {
-      "id": 0.8619481199702621,
-      "gif": "7IHaFYgTgCICI",
-      "label": "Malmin Ykä",
+      "id": 0.4102361745292684,
+      "gif": "KzGCAlMiK6hQQ",
+      "label": "Terveisiä pöndelään",
+      "pos": [
+        60.2147412,
+        24.7135291
+      ],
+      "marker": "laugh"
+    }
+  ],
+  "replies": [
+    {
+      "id": 1,
+      "receiver_id": 0.7267194774040007,
+      "sender_id": 0.7267194774040007,
+      "title": "Plane",
+      "alias": "Mr.White",
+      "pos": [
+        60.2590113,
+        25.057753573850835
+      ],
+      "text": "Hahaha! Cute!",
+      "marker": "love"
+    },
+    {
+      "id": 2,
+      "receiver_id": 0.7267194774040007,
+      "sender_id": 0.7267194774040007,
+      "title": "goth",
+      "alias": "Mr.Pink",
+      "pos": [
+        60.16985569999999,
+        24.938379
+      ],
+      "text": "Slick moves fam!",
+      "marker": "sad"
+    },
+    {
+      "id": 3,
+      "receiver_id": 0.7267194774040007,
+      "sender_id": 0.7267194774040007,
+      "title": "Kontula hoods",
+      "alias": "Mr.Green",
+      "pos": [
+        60.2359519,
+        25.0836317
+      ],
+      "text": "00940",
+      "marker": "glasses"
+    },
+    {
+      "id": 0.9564719526150196,
+      "receiver_id": 0.7267194774040007,
+      "sender_id": 0.7267194774040007,
+      "title": "Kontula hoods",
+      "alias": "Mr.Brown",
+      "pos": [
+        60.2359519,
+        25.0836317
+      ],
       "marker": "glasses",
-      "pos": [
-        60.2507611,
-        25.0085738
-      ]
-    },
-    {
-      "id": 0.8285324004384733,
-      "gif": "TlqRQ1nowmHIs",
-      "label": "GTO",
-      "marker": "fear",
-      "pos": [
-        35.6828387,
-        139.7594549
-      ]
-    },
-    {
-      "id": 0.22523622764403162,
-      "gif": "s4Bi420mMDRBK",
-      "label": "How are you there?",
-      "marker": "fear",
-      "pos": [
-        64.175029,
-        -51.7355386
-      ]
-    },
-    {
-      "id": 0.16147801792128824,
-      "gif": "7A4iGSv5ncnLxUfGjZ",
-      "label": "Haters gonna hate",
-      "marker": "laugh",
-      "pos": [
-        38.8949855,
-        -77.0365708
-      ]
+      "text": "Today was a good day"
     }
   ]
 }
