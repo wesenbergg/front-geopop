@@ -96,6 +96,19 @@
       ],
       "marker": "glasses",
       "text": "Today was a good day"
+    },
+    {
+      "id": 0.24923948236002325,
+      "receiver_id": 0.7267194774040007,
+      "sender_id": 0.03498570276186941,
+      "title": "Plane",
+      "pos": [
+        60.2590113,
+        25.057753573850835
+      ],
+      "marker": "love",
+      "text": "A little bit longer reply, how about that? I'm sure it is fine but i need just check it. Ok. Checked. Now Double check. Cool! ",
+      "alias": "Mr.Green"
     }
   ]
 }

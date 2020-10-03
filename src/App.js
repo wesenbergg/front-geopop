@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import TitleBar from 'frameless-titlebar';
 import icon from './img/icon.png';

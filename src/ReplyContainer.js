@@ -15,9 +15,11 @@ const ReplyContainer = ({ repliesState }) => {
   }, [])
 
   const showReplies = () => replyList.map(e => 
-    <div className="m-3 pb-3 pt-3 separator container row" onClick={() => dispatch( setPos(e.pos) ) }>
-      <EmojiImage name={e.marker} className="col-2"/>
-      <div className="col-10">
+    <div key={e.id} className="m-3 pb-3 pt-3 separator container row" onClick={() => dispatch( setPos(e.pos) ) }>
+      <div className="col-xl-3 col-lg-4 ">
+        <EmojiImage name={e.marker} className="reply-marker"/>
+      </div>
+      <div className="col-xl-9 col-lg-8">
         <p className="lead font-weight-bold mb-0">{e.title}</p>
         <p>{e.alias}: <i>{e.text}</i></p>
       </div>

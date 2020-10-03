@@ -18,7 +18,7 @@ const Preview = ({gif}) => {
 
 const MessageForm = ({ markerState, formState }) => {
   const { data, setData } = markerState;
-  const { form, setForm } = formState;
+  const { form, } = formState;
   const { fetchGifs, searchKey } = useContext(SearchContext);
 
   const [label, setLabel] = useState(); //Data to form
