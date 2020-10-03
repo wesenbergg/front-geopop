@@ -5,6 +5,8 @@ import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
 import { useStateValue } from './state/state';
 import getIcon from './utils/icons/getIcon';
 import SendIcon from '@material-ui/icons/Send';
+import RefreshIcon from '@material-ui/icons/Refresh';
+import { reFetch } from './state/reducer';
 
 // const position = [60, 24]
 
@@ -28,6 +30,9 @@ const ReplyForm = ({ post }) => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(reply)
     })
+    .then(res => {
+      setText("");
+    })
   };
 
   return(
@@ -42,7 +47,7 @@ const ReplyForm = ({ post }) => {
 }
 
 const MapContainer = ({markerState}) => {
-  const [{ user },] = useStateValue();
+  const [ { user, fetchData }, dispatch ] = useStateValue();
   const { data, setData } = markerState;
   const [gif, setGif] = useState();
   const gf = new GiphyFetch(process.env.REACT_APP_GIPHY_API);
@@ -50,8 +55,8 @@ const MapContainer = ({markerState}) => {
   useEffect( () => {
     fetch("http://localhost:3001/posts")
     .then(res => res.json())
-    .then(res => setData(res) )
-  }, [setData])
+    .then(res => setData(res) );
+  }, [setData, fetchData])
   
   const fetchGif = async (id) => {
     try {
@@ -74,7 +79,7 @@ const MapContainer = ({markerState}) => {
         <ReplyForm post={e} />
       </Popup>
     </Marker>
-    )
+  )
 
   return(
     <div className="col-8 p-0 h-100">
@@ -85,7 +90,11 @@ const MapContainer = ({markerState}) => {
           attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
         />
         { data ? showMarkers() : ''}
+        <div id="RefreshBtn" className="btn btn-success" onClick={() => dispatch(reFetch())}>
+          <RefreshIcon fontSize='large'/>
+        </div>
       </Map>
+      
     </div>
   );
 }

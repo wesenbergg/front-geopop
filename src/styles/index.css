@@ -168,3 +168,21 @@ code {
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
+
+#RefreshBtn {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  z-index: 99999999;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  border-radius: 50px;
+  transition: .8s ease-in-out;
+}
+
+#RefreshBtn:hover {
+  -webkit-transform : rotate(120deg) scale(1.2); /* Chrome, Opera 15+, Safari 3.1+ */
+  -ms-transform     : rotate(120deg) scale(1.2); /* IE 9 */
+  transform         : rotate(120deg) scale(1.2); /* Firefox 16+, IE 10+, Opera */
+  transition: .8s ease-in-out;
+}

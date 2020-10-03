@@ -131,6 +131,28 @@
       "marker": "love",
       "text": "I love trains",
       "alias": "Mr.Green"
+    },
+    {
+      "id": 0.05943837470598412,
+      "title": "Guess whos back?",
+      "pos": [
+        42.3315509,
+        -83.0466403
+      ],
+      "marker": "glasses",
+      "text": "Chiki chiki slim shady",
+      "alias": "Mr.Green"
+    },
+    {
+      "id": 0.8282786116010767,
+      "title": "Guess whos back?",
+      "pos": [
+        42.3315509,
+        -83.0466403
+      ],
+      "marker": "glasses",
+      "text": "Moms spaghetti",
+      "alias": "Mr.Green"
     }
   ]
 }

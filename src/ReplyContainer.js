@@ -5,14 +5,14 @@ import EmojiImage from './components/EmojiImage';
 
 const ReplyContainer = ({ repliesState }) => {
   const {replies,} = repliesState
-  const [, dispatch ] = useStateValue();
+  const [{ fetchData }, dispatch ] = useStateValue();
   const [ replyList, setReplyList ] = useState([]);
   
   useEffect(() => {
     fetch("http://localhost:3001/replies")
     .then(res => res.json())
     .then(res => setReplyList(res) )
-  }, [])
+  }, [fetchData])
 
   const showReplies = () => replyList.map(e => 
     <div key={e.id} className="m-3 pb-3 pt-3 separator container row" onClick={() => dispatch( setPos(e.pos) ) }>

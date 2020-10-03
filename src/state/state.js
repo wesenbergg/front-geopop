@@ -3,7 +3,8 @@ import React, { createContext, useContext, useReducer } from "react";
 const initialState = {
   user: {}, //contains location, id, and geocode
   posts: [],
-  replies: []
+  replies: [],
+  fetchData: false
 };
 
 export const StateContext = createContext([

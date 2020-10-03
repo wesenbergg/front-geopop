@@ -24,8 +24,8 @@ const WelcomePage = () => {
       <div className="center ">
         <div className="bounce-in-top">
           <img src={icon} alt='icon' height={150} width={150}/>
-          <h1 class="display-4">Welcome to GeoPop!</h1>
-          <p class="lead">Enter your location and you're ready to start your journey.</p>
+          <h1 className="display-4">Welcome to GeoPop!</h1>
+          <p className="lead">Enter your location and you're ready to start your journey.</p>
         </div>
         <div className="group mt-2 mb-2 row">
           <input type="text" className="form-control col-9" placeholder="Your location..."

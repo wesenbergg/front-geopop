@@ -100,7 +100,7 @@ const MessageForm = ({ markerState, formState }) => {
         <EmojiImage name={'glasses'} className={`col-2 ${marker === 'glasses' ? 'active': ''}`} onClick={() => setMarker('glasses')} />
         <EmojiImage name={'wink'} className={`col-2 ${marker === 'wink' ? 'active': ''}`} onClick={() => setMarker('wink')} />
       </div>
-      <button type="submit" className="btn btn-success btn-block mt-2" >Send</button>
+      <button type="submit" className="btn btn-success btn-block mt-2" >Publish</button>
     </form>
   );
 }
