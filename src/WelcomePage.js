@@ -17,7 +17,6 @@ const WelcomePage = () => {
   }
 
   const handleAutoComplete = ({ prop, geo }) => {
-    // console.log('Click', prop.geocoding.label);
     setTempUser({
       id: Math.random(),
       pos_label: prop.geocoding.label,
@@ -34,12 +33,11 @@ const WelcomePage = () => {
           <p className="lead">Enter your location and you're ready to start your journey.</p>
         </div>
         <div className="group mt-2 mb-2 row">
-          {/* <input type="text" 
-            value={location} onChange={e => setLocation(e.target.value)} /> */}
           <AutocompleteInput className="col-9" placeholder="Your location..."
             handleAutoComplete={handleAutoComplete} />
           <button className="btn btn-success col-2 ml-2" onClick={submit} ><CheckIcon /></button>
         </div>
+        <small className="text-muted">Credits; emoji assets: <i>freepngimg.com</i>, GIFs: GIPHY&copy;, geocoding: <i>OSM nominatim</i></small>
       </div>
     </div>
   );

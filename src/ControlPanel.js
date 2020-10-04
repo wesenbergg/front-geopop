@@ -7,7 +7,7 @@ import MessageForm from './MessageForm';
 import ReplyContainer from './ReplyContainer';
 import { useStateValue } from './state/state';
 import AutocompleteInput from './components/AutocompleteInput';
-import { setUser } from './state/reducer';
+import { setMessage, setUser } from './state/reducer';
 
 const ControlPanel = ({ markerState }) => {
   const [{ user }, dispatch] = useStateValue();  
@@ -17,7 +17,7 @@ const ControlPanel = ({ markerState }) => {
   const [editLocation, setEditLocation] = useState(false);
 
   const handleAutoComplete = ({ prop, geo }) => {
-    // console.log('Click', prop.geocoding.label);
+    dispatch(setMessage('Changed location to: '+ prop.geocoding.label, 'success'));
     dispatch(setUser({
       ...user,
       pos_label: prop.geocoding.label,

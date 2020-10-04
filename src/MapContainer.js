@@ -6,19 +6,18 @@ import { useStateValue } from './state/state';
 import getIcon from './utils/icons/getIcon';
 import SendIcon from '@material-ui/icons/Send';
 import RefreshIcon from '@material-ui/icons/Refresh';
-import { reFetch } from './state/reducer';
-
-// const position = [60, 24]
+import { reFetch, setMessage } from './state/reducer';
 
 const ReplyForm = ({ post }) => {
   const [text, setText] = useState();
-  const [{ user }, ] = useStateValue();
+  const [{ user }, dispatch ] = useStateValue();
 
   const send = () => {
+    if(!text || text === "") return dispatch(setMessage("Reply length must be atleast 1 character.", "danger"));
     const reply = {
       id: Math.random(),
       receiver_id: post.sender_id,
-      sender_id: user.uuid,
+      sender_id: user.id,
       title: post.label,
       pos: post.pos,
       marker: post.marker,
@@ -32,6 +31,7 @@ const ReplyForm = ({ post }) => {
     })
     .then(res => {
       setText("");
+      dispatch(setMessage('Successfully replied to: '+post.label, 'success'))
     })
   };
 
@@ -70,16 +70,24 @@ const MapContainer = ({markerState}) => {
     }
   };
   
-  const showMarkers = () => data.map( e => 
+  const showMarkers = () => data.map( e => {
+    console.log("Element:", e);
+    console.log("user", user.id);
+    console.log("sender", e.sender_id);
+    console.log("Bool", e.sender_id === user.id);
+    return(
+      
     <Marker key={e.id} position={e.pos} onclick={() => fetchGif(e.gif)} icon={getIcon(e.marker)} draggable>
-      <Popup>
-        <h3>{e.label}</h3>
-        {gif ? <Gif hideAttribution gif={gif} width={300} />: <p>Loading</p>}
-        {/* {user.uuid === e.sender_id ? <></>: <ReplyForm post={e} />} */}
-        <ReplyForm post={e} />
-      </Popup>
-    </Marker>
-  )
+    <Popup>
+      <h3>{e.label}</h3>
+      {gif ? <Gif hideAttribution gif={gif} width={300} />: <p>Loading</p>}
+      {user.id === e.sender_id ? <></>: <ReplyForm post={e} />}
+      {/* <ReplyForm post={e} /> */}
+    </Popup>
+  </Marker>
+
+    )
+  })
 
   return(
     <div className="col-8 p-0 h-100">
@@ -90,7 +98,7 @@ const MapContainer = ({markerState}) => {
           attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
         />
         { data ? showMarkers() : ''}
-        <div id="RefreshBtn" className="btn btn-success" onClick={() => dispatch(reFetch())}>
+        <div id="RefreshBtn" className="btn btn-success" onClick={() => dispatch(reFetch()) || dispatch(setMessage('Refreshed posts and replies.', 'primary'))}>
           <RefreshIcon fontSize='large'/>
         </div>
       </Map>

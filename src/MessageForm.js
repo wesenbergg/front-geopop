@@ -6,6 +6,8 @@ import {
 } from '@giphy/react-components';
 import EmojiImage from './components/EmojiImage';
 import AutocompleteInput from './components/AutocompleteInput';
+import { useStateValue } from './state/state';
+import { setMessage } from './state/reducer';
 
 const Preview = ({gif}) => {
   return (
@@ -19,20 +21,43 @@ const Preview = ({gif}) => {
 const MessageForm = ({ markerState, formState }) => {
   const { data, setData } = markerState;
   const { form, } = formState;
-  const { fetchGifs, searchKey } = useContext(SearchContext);
+  const { fetchGifs, searchKey, setSearch } = useContext(SearchContext);
+  const [ { user }, dispatch ] = useStateValue(); 
 
   const [label, setLabel] = useState(); //Data to form
   const [curGif, setCurGif] = useState(); //new post
   const [pos, setPos] = useState();
   const [marker, setMarker] = useState();
+  const [reset, setReset] = useState(false);
 
   const handleAutoComplete = ({ _, geo }) => {
     setPos([geo.coordinates[1], geo.coordinates[0]])
   }
 
+  const validate = () => {
+    if(!label)
+      throw new Error('Label is required for publishing posts.');
+    if(!pos)
+      throw new Error('Location is required for publishing posts.');
+    if(!curGif || !curGif.id)
+      throw new Error('Gif is required for publishing posts.');
+    if(!marker)
+      throw new Error('Marker is required for publishing posts.');
+    if(label.length > 40)
+      throw new Error('Shorten label to 40 characters or less.');
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    const newMarker = { id: Math.random(), gif: curGif.id, label, pos, marker };
+    
+    try {
+      validate();
+    } catch (error) {
+      return dispatch(setMessage("Error: "+error.message, 'danger'))
+    }
+
+    const newMarker = { id: Math.random(), sender_id: user.id, gif: curGif.id, label, pos, marker };
+
     setData([ ...data, newMarker ]);
     fetch('http://localhost:3001/posts', {
         method: 'POST',
@@ -40,10 +65,13 @@ const MessageForm = ({ markerState, formState }) => {
         body: JSON.stringify(newMarker)
     })
     .then(_ => {
+      dispatch(setMessage('Published: '+label, 'success'))
       setLabel("")
       setCurGif(undefined)
       setPos(undefined)
       setMarker(undefined)
+      setReset(!reset)
+      setSearch("")
       // setMessage({type: "success", text: "Tapahtuma " + newObject.title + " lisätty tapahtumakalenteriin."})
     });
   }
@@ -55,7 +83,7 @@ const MessageForm = ({ markerState, formState }) => {
         value={label} onChange={(e) => setLabel(e.target.value)} />
 
       <AutocompleteInput className="mt-3"  handleAutoComplete={handleAutoComplete}
-        placeholder="Location, to share your vibes" />
+        placeholder="Location, to share your vibes" reset={reset} />
       
       {curGif ? <Preview gif={curGif} />: ''}
       <SearchBar placeholder="Mood in GIF..." className="gif-input form-control mt-3" />

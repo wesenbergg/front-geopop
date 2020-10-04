@@ -35,6 +35,7 @@
     },
     {
       "id": 0.4102361745292684,
+      "sender_id": 0.0067194774040007,
       "gif": "KzGCAlMiK6hQQ",
       "label": "Terveisiä pöndelään",
       "pos": [
@@ -44,14 +45,15 @@
       "marker": "laugh"
     },
     {
-      "id": 0.7841265820290542,
-      "gif": "xT0xeknwLbwR5srUvm",
-      "label": "Guess whos back?",
+      "id": 0.7306787717715808,
+      "sender_id": 0.1410323956851629,
+      "gif": "lPuW5AlR9AeWzSsIqi",
+      "label": "Tuna",
       "pos": [
-        42.3315509,
-        -83.0466403
+        59.4250354,
+        24.74386926051089
       ],
-      "marker": "glasses"
+      "marker": "laugh"
     }
   ],
   "replies": [
@@ -121,37 +123,16 @@
       "alias": "Mr.Green"
     },
     {
-      "id": 0.28656152605601704,
-      "receiver_id": 0.7267194774040007,
-      "title": "Plane",
+      "id": 0.11439125671173933,
+      "receiver_id": 0.1410323956851629,
+      "sender_id": 0.7281373493787635,
+      "title": "Tuna",
       "pos": [
-        60.2590113,
-        25.057753573850835
+        59.4250354,
+        24.74386926051089
       ],
-      "marker": "love",
-      "text": "I love trains",
-      "alias": "Mr.Green"
-    },
-    {
-      "id": 0.05943837470598412,
-      "title": "Guess whos back?",
-      "pos": [
-        42.3315509,
-        -83.0466403
-      ],
-      "marker": "glasses",
-      "text": "Chiki chiki slim shady",
-      "alias": "Mr.Green"
-    },
-    {
-      "id": 0.8282786116010767,
-      "title": "Guess whos back?",
-      "pos": [
-        42.3315509,
-        -83.0466403
-      ],
-      "marker": "glasses",
-      "text": "Moms spaghetti",
+      "marker": "laugh",
+      "text": "Menneekö oikealle ihmiselle?",
       "alias": "Mr.Green"
     }
   ]

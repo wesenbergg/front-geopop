@@ -4,7 +4,8 @@ const initialState = {
   user: {}, //contains location, id, and geocode
   posts: [],
   replies: [],
-  fetchData: false
+  fetchData: false,
+  message: []
 };
 
 export const StateContext = createContext([

@@ -187,3 +187,11 @@ code {
   transform         : rotate(120deg) scale(1.2); /* Firefox 16+, IE 10+, Opera */
   transition: .8s ease-in-out;
 }
+
+#Message {
+  position: absolute;
+  top: 50px;
+  right: 50px;
+  width: 40%;
+  z-index: 9999;
+}

@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDebouncedCallback } from 'use-debounce/lib';
 
-const AutocompleteInput = ({ defaultValue, className, placeholder, handleAutoComplete, ...props }) => {
+const AutocompleteInput = ({ defaultValue, className, placeholder, handleAutoComplete, reset, ...props }) => {
   const [mapData, setMapData] = useState();
   const [value, setValue] = useState(defaultValue);
 
   const debounced = useDebouncedCallback(
-    (value) => {
-      if(value === '') return;
-      fetch('https://nominatim.openstreetmap.org/search?format=geocodejson&limit=4&q='+value)
+    (v) => {
+      if(v === '') return;
+      fetch('https://nominatim.openstreetmap.org/search?format=geocodejson&limit=4&q='+v)
       .then(res => res.json())
       .then(res => {
         if(res && res.features) setMapData(res.features)
@@ -18,6 +18,11 @@ const AutocompleteInput = ({ defaultValue, className, placeholder, handleAutoCom
     // The maximum time func is allowed to be delayed before it's invoked:
     { maxWait: 2000 }
   );
+
+  useEffect( () => {
+    if(reset) setValue('')
+      // console.log("Reset");
+  }, [reset])
 
   const handleAutoCompleteClick = (prop, geo) => {
     handleAutoComplete({ prop, geo })
@@ -33,7 +38,7 @@ const AutocompleteInput = ({ defaultValue, className, placeholder, handleAutoCom
   return(
     <>
       <div className={`autocomplete ${className}`}>
-        <input className="form-control" placeholder={placeholder} value={value} defaultValue={defaultValue}
+        <input className="form-control" placeholder={placeholder} value={value}
           onChange={(e) => debounced.callback(e.target.value) || setValue(e.target.value)} />
         <div className="autocomplete-items">
           {mapData ? showResult(): ''}
