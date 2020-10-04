@@ -4,7 +4,7 @@ import { useStateValue } from '../state/state';
 
 const Message = ({ message, className, ...props }) => {
   const [ , dispatch ] = useStateValue();
-  console.log('message', message);
+  // console.log('message', message);
 
   if(!message || !message.text || !message.text ) return <></>;
   setTimeout(() => dispatch(clearMessage()), 5000);

@@ -24,7 +24,7 @@ const MessageForm = ({ markerState, formState }) => {
   const { fetchGifs, searchKey, setSearch } = useContext(SearchContext);
   const [ { user }, dispatch ] = useStateValue(); 
 
-  const [label, setLabel] = useState(); //Data to form
+  const [label, setLabel] = useState(""); //Data to form
   const [curGif, setCurGif] = useState(); //new post
   const [pos, setPos] = useState();
   const [marker, setMarker] = useState();
@@ -35,7 +35,7 @@ const MessageForm = ({ markerState, formState }) => {
   }
 
   const validate = () => {
-    if(!label)
+    if(!label || label === "")
       throw new Error('Label is required for publishing posts.');
     if(!pos)
       throw new Error('Location is required for publishing posts.');

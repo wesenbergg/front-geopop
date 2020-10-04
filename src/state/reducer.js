@@ -38,13 +38,13 @@ export const reducer = (state, action) => {
 
 export const initUser = () => {
   const userFromStorage = localStorage.getItem("geopopUser")
-  console.log('uFromStorage', userFromStorage);
+  // console.log('uFromStorage', userFromStorage);
   if (!userFromStorage || userFromStorage === 'undefined') return { type: "NO_USER" };
   return { type: "INIT_USER", payload: JSON.parse(userFromStorage) };
 };
 
 export const setUser = (newUser) => {
-  console.log('newUser', newUser);
+  // console.log('newUser', newUser);
   localStorage.setItem("geopopUser", JSON.stringify(newUser))
   return { type: "SET_USER", payload: newUser };
 };

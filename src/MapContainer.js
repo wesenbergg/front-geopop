@@ -32,7 +32,7 @@ const ReplyForm = ({ post }) => {
     .then(res => {
       setText("");
       dispatch(setMessage('Successfully replied to: '+post.label, 'success'))
-    })
+    });
   };
 
   return(
@@ -43,7 +43,7 @@ const ReplyForm = ({ post }) => {
         <button className="btn btn-success" type="button" onClick={send}><SendIcon /></button>
       </div>
     </div>
-  )
+  );
 }
 
 const MapContainer = ({markerState}) => {
@@ -56,28 +56,21 @@ const MapContainer = ({markerState}) => {
     fetch("http://localhost:3001/posts")
     .then(res => res.json())
     .then(res => setData(res) );
-  }, [setData, fetchData])
+  }, [setData, fetchData]);
   
   const fetchGif = async (id) => {
     try {
-      console.log(id);
-      const { data } = await gf.gif(id)
-      console.log("Data ", data);
+      const { data } = await gf.gif(id);
+      // console.log("Data ", data);
       if(!data || data.id === "undefined") return console.log(data);
-      setGif(data)
+      setGif(data);
     } catch (error) {
-      console.log("Error while fetching giphy");
+      dispatch(setMessage("Error while fetching giphy"));
     }
   };
   
-  const showMarkers = () => data.map( e => {
-    console.log("Element:", e);
-    console.log("user", user.id);
-    console.log("sender", e.sender_id);
-    console.log("Bool", e.sender_id === user.id);
-    return(
-      
-    <Marker key={e.id} position={e.pos} onclick={() => fetchGif(e.gif)} icon={getIcon(e.marker)} draggable>
+  const showMarkers = () => data.map( e => 
+  <Marker key={e.id} position={e.pos} onclick={() => fetchGif(e.gif)} icon={getIcon(e.marker)} draggable>
     <Popup>
       <h3>{e.label}</h3>
       {gif ? <Gif hideAttribution gif={gif} width={300} />: <p>Loading</p>}
@@ -85,9 +78,7 @@ const MapContainer = ({markerState}) => {
       {/* <ReplyForm post={e} /> */}
     </Popup>
   </Marker>
-
-    )
-  })
+  );
 
   return(
     <div className="col-8 p-0 h-100">

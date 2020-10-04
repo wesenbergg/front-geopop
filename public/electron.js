@@ -15,8 +15,6 @@ function createWindow () {
   })
 
   ipcMain.on("minimize", (evt, arg) => {
-    console.log(win.isMaximized());
-    
    win.minimize();
   });
 
