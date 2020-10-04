@@ -29,6 +29,8 @@ const WelcomePage = () => {
       <div className="center ">
         <div className="bounce-in-top">
           <img src={icon} alt='icon' height={150} width={150}/>
+        </div>
+        <div className="fade-in">
           <h1 className="display-4">Welcome to GeoPop!</h1>
           <p className="lead">Enter your location and you're ready to start your journey.</p>
         </div>
@@ -37,7 +39,11 @@ const WelcomePage = () => {
             handleAutoComplete={handleAutoComplete} />
           <button className="btn btn-success col-2 ml-2" onClick={submit} ><CheckIcon /></button>
         </div>
-        <small className="text-muted">Credits; emoji assets: <i>freepngimg.com</i>, GIFs: GIPHY&copy;, geocoding: <i>OSM nominatim</i></small>
+        <small className="text-muted">
+          Credits; emoji assets: <i>freepngimg.com</i>, GIFs: GIPHY&copy;, geocoding: <i>OSM nominatim</i>
+          <br/>
+          All rights reserved &copy; GeoPop 2020
+        </small>
       </div>
     </div>
   );
