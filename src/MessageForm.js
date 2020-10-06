@@ -43,8 +43,8 @@ const MessageForm = ({ markerState, formState }) => {
       throw new Error('Gif is required for publishing posts.');
     if(!marker)
       throw new Error('Marker is required for publishing posts.');
-    if(label.length > 40)
-      throw new Error('Shorten label to 40 characters or less.');
+    if(label.length > 100)
+      throw new Error('Shorten label to 100 characters or less.');
   }
 
   const handleSubmit = (e) => {
