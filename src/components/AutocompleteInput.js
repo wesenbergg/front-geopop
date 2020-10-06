@@ -20,7 +20,7 @@ const AutocompleteInput = ({ defaultValue, className, placeholder, handleAutoCom
   );
 
   useEffect( () => {
-    if(reset) setValue('')
+    if(reset !== undefined) setValue('')
       // console.log("Reset");
   }, [reset])
 

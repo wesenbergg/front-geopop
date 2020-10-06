@@ -72,7 +72,7 @@ const MapContainer = ({markerState}) => {
   <Marker key={e.id} position={e.pos} onclick={() => fetchGif(e.gif)} icon={getIcon(e.marker)} draggable>
     <Popup>
       <h3>{e.label}</h3>
-      {gif ? <Gif hideAttribution gif={gif} width={300} />: <p>Loading</p>}
+      {gif ? <Gif hideAttribution noLink gif={gif} width={300} />: <p>Loading</p>}
       {user.id === e.sender_id ? <></>: <ReplyForm post={e} />}
       {/* <ReplyForm post={e} /> */}
     </Popup>

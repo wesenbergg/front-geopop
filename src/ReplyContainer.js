@@ -32,11 +32,18 @@ const ReplyContainer = ({ repliesState }) => {
       </div>
     </div>)
 
+  const showSadFace = () => 
+  <div id="EmptyInbox" className="text-center">
+    <EmojiImage name="sad" className="op-4 empty-inbox" />
+    <p className="lead text-muted strong">No messages yet.</p>
+  </div>
+
+    console.log(replyList.length);
   return(
     <div className={replies ? "": "d-none"}>
       <h3 className="pt-4 pl-3 pb-3 mb-0 inbox-h">Inbox</h3>
-      <div className="reply-container">
-        {showReplies()}
+      <div className="reply-container custom-scroll">
+        {!replyList || replyList.length === 0 ? showSadFace(): showReplies()}
       </div>
     </div>
   );

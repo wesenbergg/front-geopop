@@ -3,7 +3,7 @@ import icon from './img/icon.png'
 import CheckIcon from '@material-ui/icons/Check';
 import './styles/Welcome.css'
 import { useStateValue } from './state/state';
-import { setUser } from './state/reducer';
+import { setMessage, setUser } from './state/reducer';
 import AutocompleteInput from './components/AutocompleteInput';
 
 
@@ -13,7 +13,8 @@ const WelcomePage = () => {
 
   const submit = () => {
     if(tempUser && tempUser.pos)
-      dispatch(setUser(tempUser))
+      return dispatch(setUser(tempUser))
+    dispatch(setMessage('Please enter a valid location', 'danger'))
   }
 
   const handleAutoComplete = ({ prop, geo }) => {
