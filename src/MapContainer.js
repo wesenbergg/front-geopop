@@ -21,10 +21,9 @@ const ReplyForm = ({ post }) => {
       title: post.label,
       pos: post.pos,
       marker: post.marker,
-      text,
-      alias: "Mr.Green" //DEFAULT ARVO, TODO: Tämä pitäisi määrittää backendissä
+      text
     };
-    fetch('http://localhost:3001/replies', {
+    fetch('https://geo-pop.herokuapp.com/api/replies', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(reply)
@@ -53,7 +52,7 @@ const MapContainer = ({markerState}) => {
   const gf = new GiphyFetch(process.env.REACT_APP_GIPHY_API);
 
   useEffect( () => {
-    fetch("http://localhost:3001/posts")
+    fetch("https://geo-pop.herokuapp.com/api/posts")
     .then(res => res.json())
     .then(res => setData(res) );
   }, [setData, fetchData]);

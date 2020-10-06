@@ -2,16 +2,23 @@ import React, { useEffect, useState } from 'react';
 import { setPos } from './state/reducer';
 import { useStateValue } from './state/state';
 import EmojiImage from './components/EmojiImage';
+import { getAliases } from './utils/names';
 
 const ReplyContainer = ({ repliesState }) => {
   const {replies,} = repliesState
-  const [{ fetchData }, dispatch ] = useStateValue();
+  const [{ fetchData, user }, dispatch ] = useStateValue();
   const [ replyList, setReplyList ] = useState([]);
   
   useEffect(() => {
-    fetch("http://localhost:3001/replies")
+    fetch("https://geo-pop.herokuapp.com/api/replies/"+user.id)
     .then(res => res.json())
-    .then(res => setReplyList(res) )
+    .then(res => {
+      const aliases = getAliases(res);
+      const list = res.map(e => {
+        return { ...e, alias: aliases[e.sender_id] }
+      });
+      setReplyList(list);
+    });
   }, [fetchData])
 
   const showReplies = () => replyList.map(e => 

@@ -59,7 +59,7 @@ const MessageForm = ({ markerState, formState }) => {
     const newMarker = { id: Math.random(), sender_id: user.id, gif: curGif.id, label, pos, marker };
 
     setData([ ...data, newMarker ]);
-    fetch('http://localhost:3001/posts', {
+    fetch('https://geo-pop.herokuapp.com/api/posts', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newMarker)

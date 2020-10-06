@@ -1,16 +1,22 @@
 export const CSS_COLOR_NAMES = [
+  "Pink",
+  "Brown",
+  "White",
+  "Blue",
+  "Blonde",
+  "Orange",
+  "Grey",
+  "Green",
+  "Aqua",
   "AliceBlue",
   "AntiqueWhite",
-  "Aqua",
   "Aquamarine",
   "Azure",
   "Beige",
   "Bisque",
   "Black",
   "BlanchedAlmond",
-  "Blue",
   "BlueViolet",
-  "Brown",
   "BurlyWood",
   "CadetBlue",
   "Chartreuse",
@@ -53,8 +59,6 @@ export const CSS_COLOR_NAMES = [
   "Gold",
   "GoldenRod",
   "Gray",
-  "Grey",
-  "Green",
   "GreenYellow",
   "HoneyDew",
   "HotPink",
@@ -104,7 +108,6 @@ export const CSS_COLOR_NAMES = [
   "OldLace",
   "Olive",
   "OliveDrab",
-  "Orange",
   "OrangeRed",
   "Orchid",
   "PaleGoldenRod",
@@ -114,7 +117,6 @@ export const CSS_COLOR_NAMES = [
   "PapayaWhip",
   "PeachPuff",
   "Peru",
-  "Pink",
   "Plum",
   "PowderBlue",
   "Purple",
@@ -143,10 +145,18 @@ export const CSS_COLOR_NAMES = [
   "Turquoise",
   "Violet",
   "Wheat",
-  "White",
   "WhiteSmoke",
   "Yellow",
   "YellowGreen",
 ];
 
 export const getColorByIndex = (index) => CSS_COLOR_NAMES[index];
+
+//NOTE: listan jäsenellä tulee olla sender id
+export const getAliases = (list) => {
+  var aliases = {};
+  list.forEach((e, i) => {
+    return aliases[e.sender_id] = "Mr."+CSS_COLOR_NAMES[i];
+  });
+  return aliases;
+}
